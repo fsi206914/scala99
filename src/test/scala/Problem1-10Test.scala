@@ -10,70 +10,122 @@ class Chapter1Test extends Specification {
 
   import Chapter1._
   /* 
-  *Question1_1 
+  *Problem1 
   */
-  "Question1_1" should {
-    "a string has all unique characters" in {
+  "P1" should {
+    "Find the last element of a list." in {
 
-      isUniqueCharacters("asdfajkl") === false 
-      isUniqueCharacters("asdf") === true
+      findLastElem(List(1,2,3)) === 3
+      findLastElem(List(3)) === 3
+      findLastElem(List()) must throwA[Exception]    
     }
   }
   /*==============================================================*/
 
   /* 
-  *Question1_3 
+  *Problem2
   */
-  "Question1_3" should {
-    "Are two strings premutations each other" in {
+  "P2" should {
+    "Find the last but one element of a list." in {
 
-      isPermutation("as", "sa") === true 
-      isPermutation("as", "sd") === false 
+      findLastButOne(List(1, 2, 3)) === 2
+      findLastButOne(List(2, 3)) === 2
+      findLastButOne(List(1)) must throwA[Exception]   
+      findLastButOne(List()) must throwA[Exception]    
 
     }
   }
   /*==============================================================*/
 
   /* 
-  *Question1_5 
+  *Problem3
   */
-  "Question1_5" should {
-    "Compress String in basic format" in {
+  "P3" should {
+    "Find the Kth element of a list." in {
 
-      compressString("aaaaasss")=== "a5s3" 
-      compressString("abcd")=== "abcd" 
+      findKthElem(List(1, 2, 3), 2) === 3
+      findKthElem(List(1), 8) must throwA[Exception]   
+      findKthElem(List(),2) must throwA[Exception]    
+
     }
   }
   /*==============================================================*/
 
   /* 
-  *Question1_7 
+  *Problem4
   */
-  "Question1_7" should {
-    "set Matrix zeros" in {
+  "P4" should {
+    "Find the number of elems in a list." in {
 
-      val aMatrix = Array.ofDim[Int](4, 4)
-      aMatrix(1)(2) = 0
-      aMatrix(0)(2) = 0
-      aMatrix(3)(3) = 0
-      setMatrixZeros(aMatrix)
-      aMatrix(0)(3) === 0
+      findLength(List(1, 2, 3)) === 3
+      findLength(List()) === 0
     }
   }
   /*==============================================================*/
 
   /* 
-  *Question1_8 
+  *Problem5
   */
-  "Question1_8" should {
-    "is two strs rotation each other" in {
+  "P5" should {
+    "Find the number of elems in a list." in {
 
-      isRotation("abc", "bca") == true
-      isRotation("abcd", "bca") == false 
+      reverse(List(1, 2, 3)) === List(3,2,1)
     }
   }
   /*==============================================================*/
 
+  /* 
+  *Problem6
+  */
+  "P6" should {
+    "is Palindrome" in {
 
+      isPalindrome(List(1, 2, 1)) === true
+    }
+  }
+  /*==============================================================*/
+
+  /* 
+  *Problem7
+  */
+  "P7" should {
+    "Flatten a nested list structure" in {
+
+      flatten( List(List(1, 2, 1), 1 , List(2)) ) === List(1,2,1,1,2)
+    }
+  }
+  /*==============================================================*/
+
+  /* 
+  *Problem8
+  */
+  "P8" should {
+    "Eliminate consecutive duplicates of list elements." in {
+
+      eliminateDuplicates(List(1, 1, 2, 1, 1)) === List(1,2,1)
+    }
+  }
+  /*==============================================================*/
+
+  /* 
+  *Problem9
+  */
+  "P9" should {
+    "Pack consecutive duplicates of list elements into sublists." in {
+      pack(List(1, 1, 2, 1, 1)) === List(List(1, 1), List(2), List(1, 1))
+    }
+  }
+  /*==============================================================*/
+
+  /* 
+  *Problem10
+  */
+  "P10" should {
+    "Run-length encoding of a list." in {
+
+      lenEncode(List(1, 1, 2, 1, 1)) === List((2,1),(1,2),(2,1))
+    }
+  }
+  /*==============================================================*/
 
 }
